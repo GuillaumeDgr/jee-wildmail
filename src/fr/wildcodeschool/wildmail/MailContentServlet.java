@@ -10,12 +10,17 @@ import java.io.IOException;
 @WebServlet(name = "MailContentServlet")
 public class MailContentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String createFromValue = request.getParameter("createFromValue");
+
+        String createFromValue = (String) request.getSession().getAttribute("loginEmailValue");
         String createToValue = request.getParameter("createToValue");
         String createContentValue = request.getParameter("createContentValue");
-        request.setAttribute("fromValue", createFromValue);
-        request.setAttribute("toValue", createToValue);
-        request.setAttribute("contentValue", createContentValue);
+
+        MailBean mailBean = new MailBean();
+        mailBean.setFrom(createFromValue);
+        mailBean.setTo(createToValue);
+        mailBean.setContent(createContentValue);
+        request.setAttribute("mailBean", mailBean);
+
         this.getServletContext().getRequestDispatcher("/mail_content.jsp").forward(request, response);
     }
 

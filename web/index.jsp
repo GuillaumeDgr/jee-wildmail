@@ -11,11 +11,6 @@
         <title>Login</title>
     </head>
     <body>
-        <form method="get" action="${pageContext.request.contextPath}/mail/create">
-            <label for="loginEmail">Email : </label>
-            <input required type="email" name="loginEmailValue" id="loginEmail" placeholder="Your login email here..." />
-            <br />
-            <input type="submit" value="Login">
-        </form>
+        <jsp:forward page="/user/login" />
     </body>
 </html>

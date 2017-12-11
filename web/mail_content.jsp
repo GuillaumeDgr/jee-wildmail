@@ -11,13 +11,8 @@
         <title>Email content</title>
     </head>
     <body>
-        <%
-            String fromValue = (String) request.getAttribute("fromValue");
-            String toValue = (String) request.getAttribute("toValue");
-            String contentValue = (String) request.getAttribute("contentValue");
-        %>
-        <p><strong>From : </strong><%= fromValue %></p>
-        <p><strong>To : </strong><%= toValue %></p>
-        <p><strong>Content :</strong> <%= contentValue %></p>
+        <p><strong>From : </strong>${mailBean.from}</p>
+        <p><strong>To : </strong>${mailBean.to}</p>
+        <p><strong>Content : </strong>${mailBean.content}</p>
     </body>
 </html>
